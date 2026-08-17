@@ -41,7 +41,7 @@ function levelUp() {
 
     h2.innerText = `Level ${level}`;
 
-    // Generate a new random color
+    // Generate a random color
     let randIdx = Math.floor(Math.random() * btns.length);
     let randColor = btns[randIdx];
 
@@ -73,7 +73,7 @@ function playSequence() {
 function checkAns() {
     let idx = userseq.length - 1;
 
-    // Check whether user's latest button is correct
+    // Check if user latest button is correct
     if (userseq[idx] === gameseq[idx]) {
 
         // User completed the entire sequence
