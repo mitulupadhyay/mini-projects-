@@ -6,9 +6,13 @@ let displayCps = document.querySelector("#cps-display");
 
 let status = document.querySelector("#status");
 
+let timeButtons = document.querySelectorAll(".time-btn");
+
 
 let count = 0;
-let time = 5;
+
+let selectedTime = 5;
+let time = selectedTime;
 
 let start = false;
 let cooldown = false;
@@ -16,21 +20,54 @@ let cooldown = false;
 let timer;
 
 
+// Select Timer
+timeButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        // Dont allow the user to change time during test
+        if (start === true || cooldown === true) {
+            return;
+        }
+
+        selectedTime = Number(button.dataset.time);
+
+        time = selectedTime;
+
+        displayTime.textContent = `Time: ${selectedTime}`;
+
+
+        // Remove active from all buttons
+        timeButtons.forEach(function (btn) {
+            btn.classList.remove("active");
+        });
+
+
+        // Add active to the  selected button
+        button.classList.add("active");
+
+    });
+
+});
+
+
+// Count Clicks
 function countClick() {
 
-    // user can't start the test again by mistake once it is done:-it will take 2 second to start again
+    // Dont allow user click during cooldown
     if (cooldown === true) {
         return;
     }
 
 
-    // First click starts the test
+    // click to start the test
     if (start === false) {
+
         startTest();
+
     }
 
 
-    // click count
     count++;
 
     displayScore.textContent = `Clicks: ${count}`;
@@ -39,20 +76,26 @@ function countClick() {
 }
 
 
+// Start Test
 function startTest() {
 
     count = 0;
-    time = 5;
+
+    time = selectedTime;
 
     start = true;
 
+
     displayScore.textContent = "Clicks: 0";
-    displayTime.textContent = "Time: 5";
+
+    displayTime.textContent = `Time: ${selectedTime}`;
+
     displayCps.textContent = "CPS: --";
 
     status.textContent = "Test Running! Click Fast ASAP";
 
 
+    // countdown 
     timer = setInterval(function () {
 
         time--;
@@ -73,27 +116,32 @@ function startTest() {
             clickBox.style.backgroundColor = "";
 
 
-            // cooldown
+            // Start cooldown
             cooldown = true;
+
 
             setTimeout(function () {
 
                 cooldown = false;
 
-                status.textContent = "Click the box to try again!";
+                status.textContent = "Select a time and click the box to start!";
 
             }, 2000);
+
         }
 
     }, 1000);
+
 }
 
 
+// Calculate CPS
 function calculateCps() {
 
-    let cps = count / 5;
+    let cps = count / selectedTime;
 
     displayCps.textContent = `CPS: ${cps.toFixed(2)}`;
+
 }
 
 

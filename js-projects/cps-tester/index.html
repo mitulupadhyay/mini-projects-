@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CPS Tester</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,7 +13,19 @@
 
     <h1>Test Your CPS Here</h1>
 
-    <h2 id="status">Click the box to start!</h2>
+    <h2 id="status">Select a time and click the box to start!</h2>
+
+    <div class="time-options">
+
+        <button class="time-btn" data-time="1">1 Second</button>
+
+        <button class="time-btn active" data-time="5">5 Seconds</button>
+
+        <button class="time-btn" data-time="10">10 Seconds</button>
+
+        <button class="time-btn" data-time="15">15 Seconds</button>
+
+    </div>
 
     <div class="click-box" id="click-box">
         CLICK
@@ -22,6 +36,7 @@
     <p id="score-display">Clicks: 0</p>
 
     <p id="cps-display">CPS: --</p>
+
 
     <script src="script.js"></script>
 
