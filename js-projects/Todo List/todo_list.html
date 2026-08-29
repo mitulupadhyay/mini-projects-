@@ -3,17 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
+    <title>To-Do List App</title>
     <link rel="stylesheet" href="todo_list.css">
 </head>
 <body>
-    <h1>Todo List</h1>
-    <h2>Enter your today task</h2>
-    <input type="text" placeholder="Enter Task.." id="enter-task">
-    <button id="added-task">Add</button>
-    <ul id="task-list"></ul>
+
+    <div class="page">
+        <div class="todo-app">
+
+            <div class="app-header">
+                <h2>To-Do List <img src="images/icon.png" alt="Todo list icon"></h2>
+                <button id="theme-toggle" class="icon-btn" title="Switch to dark mode" aria-label="Switch to dark mode">🌙</button>
+            </div>
+
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your task" aria-label="New task">
+                <button id="add-btn">Add</button>
+            </div>
+
+            <p id="form-message" class="form-message" role="alert"></p>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+
+            <ul id="list-container"></ul>
+
+            <div id="empty-state" class="empty-state">
+                <p id="empty-title" class="empty-title">No tasks yet</p>
+                <p id="empty-text" class="empty-text">Add something you want to get done today.</p>
+            </div>
+
+            <div class="app-footer">
+                <span id="task-counter"></span>
+                <button id="clear-completed-btn" class="text-btn">Clear completed</button>
+            </div>
+
+        </div>
+
+        <p class="hint">Tip:- press Enter to add a task quickly</p>
+    </div>
 
     <script src="todo_list.js"></script>
-    
 </body>
 </html>
