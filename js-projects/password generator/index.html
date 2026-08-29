@@ -11,9 +11,12 @@
         <h1>Generate a<br><span>Random Password</span></h1>
         <div class="display">
             <input type="text" id="password" placeholder="Password" readonly>
-            <img src="images/copy.png" alt="copy" onclick="copyPassword()">
+            <img src="images/copy.png" alt="copy" title="Copy password" onclick="copyPassword()">
         </div>
-        <p id="copiedMsg" class="copied-msg">Copied!</p>
+        <div class="msg-row">
+            <p id="strengthText" class="strength-text"></p>
+            <p id="copiedMsg" class="copied-msg">Copied!</p>
+        </div>
 
         <div class="options">
             <div class="length-option">
@@ -21,10 +24,12 @@
                 <input type="number" id="length" value="12" min="4" max="32">
             </div>
 
-            <label><input type="checkbox" id="uppercase" checked> Uppercase (A-Z)</label>
-            <label><input type="checkbox" id="lowercase" checked> Lowercase (a-z)</label>
-            <label><input type="checkbox" id="numbers" checked> Numbers (0-9)</label>
-            <label><input type="checkbox" id="symbols" checked> Symbols (!@#$%)</label>
+            <div class="checkbox-grid">
+                <label><input type="checkbox" id="uppercase" checked> Uppercase (A-Z)</label>
+                <label><input type="checkbox" id="lowercase" checked> Lowercase (a-z)</label>
+                <label><input type="checkbox" id="numbers" checked> Numbers (0-9)</label>
+                <label><input type="checkbox" id="symbols" checked> Symbols (!@#$%)</label>
+            </div>
         </div>
 
         <button onclick="createPassword()"> <img src="images/generate.png" alt="generate"> Generate Password</button>

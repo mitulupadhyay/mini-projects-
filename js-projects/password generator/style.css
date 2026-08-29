@@ -7,9 +7,12 @@
 body{
     background: #002339;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 15px;
 }
 .container{
-    margin: 12%;
     width: 90%;
     max-width: 700px;
 }
@@ -42,6 +45,8 @@ body{
     border: 0;
     outline: 0;
     font-size: 24px;
+    flex: 1;
+    margin-right: 10px;
 }
 .container button img{
     width: 28px;
@@ -60,13 +65,37 @@ body{
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    transition: background 0.2s;
+}
+.container button:hover{
+    background: #017c43;
+}
+
+.msg-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.strength-text{
+    font-size: 14px;
+    font-weight: 500;
+}
+.strength-text.weak{
+    color: #ff6b6b;
+}
+.strength-text.medium{
+    color: #ffb84d;
+}
+.strength-text.strong{
+    color: #4ce075;
 }
 
 .copied-msg{
     display: none;
-    color: #019f55;
+    color: #4ce075;
     font-weight: 500;
-    margin-bottom: 20px;
 }
 
 .options{
@@ -88,12 +117,21 @@ body{
     width: 60px;
     padding: 5px;
     font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.length-option input:focus{
+    outline: 2px solid #019f55;
+}
+
+.checkbox-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
 .options label{
-    display: block;
     font-size: 16px;
-    margin-bottom: 10px;
     cursor: pointer;
 }
 
@@ -102,13 +140,10 @@ body{
 }
 
 @media (max-width: 500px){
-    .container{
-        margin: 8% 5%;
-    }
     .container h1{
         font-size: 32px;
     }
-    .display input{
-        width: 100%;
+    .checkbox-grid{
+        grid-template-columns: 1fr;
     }
 }
